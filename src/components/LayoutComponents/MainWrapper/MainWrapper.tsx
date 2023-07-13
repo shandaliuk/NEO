@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
@@ -10,6 +11,7 @@ export const MainWrapper: FC<MainWrapperProps> = ({ children }) => {
     <>
       <Header />
       <main>{children}</main>
+      <Toaster />
       <Footer />
     </>
   );

@@ -11,14 +11,15 @@ import asteroid from 'assets/images/asteroid.png';
 
 interface CardItemProps {
   info: AssembledInfo;
+  isMostHazardous: boolean;
 }
 
-export const CardItem: FC<CardItemProps> = ({ info }) => {
+export const CardItem: FC<CardItemProps> = ({ info, isMostHazardous }) => {
   return (
     <Card
       sx={{
         maxWidth: 345,
-        backgroundColor: '#050505',
+        backgroundColor: isMostHazardous ? '#9B1003' : '#050505',
       }}
     >
       <CardMedia

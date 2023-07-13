@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { format, startOfMonth, add } from 'date-fns';
 import { Container } from '@mui/material';
+import { toast } from 'react-hot-toast';
 
 import { TIME_BREAK, LIST_LENGTH } from 'constants/constants';
 
@@ -43,7 +44,7 @@ export const DailyInfoSection: FC = () => {
 
     setCurrentDayInfo()
       .then((info) => setAssembledInfo((state) => [...state, formulateInfo(info)]))
-      .catch((err) => console.log(err));
+      .catch(() => toast.error('Something went wrong'));
   }, [date]);
 
   useEffect(() => {
