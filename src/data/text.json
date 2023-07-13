@@ -1,0 +1,20 @@
+{
+  "logo": "neo",
+  "hero": {
+    "title": "near earth objects",
+    "text": "comets and asteroids that have been nudged by the gravitational attraction of nearby planets into orbits that allow them to enter the Earth's neighborhood."
+  },
+  "dailyInfo": {
+    "title": "daily near earth objects information",
+    "info": {
+      "diameter": "Max estimated diameter of NEO: ",
+      "hazardous": "Number of hazardous NEOs: ",
+      "closest": "Closest NEO: ",
+      "fastest": "Fastest NEO: "
+    }
+  },
+  "footer": {
+    "text": "Developed by ",
+    "link": "shandaliuk"
+  }
+}

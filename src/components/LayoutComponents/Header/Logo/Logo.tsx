@@ -1,5 +1,6 @@
 import { SiteLogoWrapper, SiteLogoIcon, SiteLogoText } from './Logo.styled';
 
+import text from 'data/text.json';
 import sprite from 'assets/icons/sprite.svg';
 
 export const Logo = () => {
@@ -8,7 +9,7 @@ export const Logo = () => {
       <SiteLogoIcon>
         <use href={sprite + '#icon-logo'}></use>
       </SiteLogoIcon>
-      <SiteLogoText>NEO</SiteLogoText>
+      <SiteLogoText>{text.logo}</SiteLogoText>
     </SiteLogoWrapper>
   );
 };

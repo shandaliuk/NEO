@@ -1,6 +1,6 @@
 export interface AssembledInfo {
-  closestNeo: string;
-  fastestNeo: string;
+  closestNeo: number;
+  fastestNeo: number;
   hazardousNeoCounter: number;
   maxEstDiameter: number;
 }

@@ -1,23 +1,44 @@
 import { FC, useEffect, useState } from 'react';
-import format from 'date-fns/format';
-import { Container, Card } from '@mui/material';
-import CardContent from '@mui/material/CardContent';
+import { format, startOfMonth, add } from 'date-fns';
+import { Container } from '@mui/material';
 
-import { fetchDailyInfo } from '../../../services/neoApi/neoApi';
-import { formulateInfo } from '../../../utils/formulateInfo';
+import { TIME_BREAK, LIST_LENGTH } from 'constants/constants';
 
-import { AssembledInfo } from '../../../types/AssembledInfo';
+import { fetchDailyInfo } from 'services/neoApi/neoApi';
+import { formulateInfo } from 'utils/formulateInfo';
+import { AssembledInfo } from 'types/AssembledInfo';
+
+import { CardList } from './CardList';
+
+import { DailySection } from './DailyInfoSection.styled';
+import text from 'data/text.json';
 
 export const DailyInfoSection: FC = () => {
-  const [date, setDate] = useState<string>(() => {
-    return format(Date.now(), 'yyyy-MM-dd');
+  const [date, setDate] = useState<Date>(() => {
+    return startOfMonth(Date.now());
   });
 
   const [assembledInfo, setAssembledInfo] = useState<AssembledInfo[]>([]);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      const nextDate = add(date, {
+        days: 1,
+      });
+
+      if (nextDate < new Date()) {
+        setDate(nextDate);
+        return;
+      }
+      setDate(startOfMonth(Date.now()));
+    }, TIME_BREAK);
+
+    return () => clearInterval(interval);
+  });
+
+  useEffect(() => {
     const setCurrentDayInfo = async () => {
-      return await fetchDailyInfo(date);
+      return await fetchDailyInfo(format(date, 'yyyy-MM-dd'));
     };
 
     setCurrentDayInfo()
@@ -25,26 +46,18 @@ export const DailyInfoSection: FC = () => {
       .catch((err) => console.log(err));
   }, [date]);
 
-  console.log(assembledInfo);
+  useEffect(() => {
+    if (assembledInfo.length === LIST_LENGTH + 1) {
+      setAssembledInfo((state) => [...state].slice(1, LIST_LENGTH + 1));
+    }
+  }, [assembledInfo.length]);
 
   return (
-    <section>
+    <DailySection>
       <Container>
-        <h2 className="visually-hidden">daily near earth objects information</h2>
-        <ul>
-          {assembledInfo.map((item, index) => {
-            return (
-              <li key={index}>
-                <Card sx={{ maxWidth: 345 }}>
-                  <CardContent>
-                    <p>card</p>
-                  </CardContent>
-                </Card>
-              </li>
-            );
-          })}
-        </ul>
+        <h2 className="visually-hidden">{text.dailyInfo.title}</h2>
+        <CardList assembledInfo={assembledInfo} />
       </Container>
-    </section>
+    </DailySection>
   );
 };

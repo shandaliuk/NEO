@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 
-import { Logo } from './Logo/Logo';
+import { Logo } from './Logo';
 
 import { MainHeader } from './Header.styled';
 

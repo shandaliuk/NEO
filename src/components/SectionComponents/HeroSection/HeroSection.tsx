@@ -1,5 +1,6 @@
 import { Typography, Container } from '@mui/material';
 
+import text from 'data/text.json';
 import { Hero } from './HeroSection.styled';
 
 export const HeroSection = () => {
@@ -11,7 +12,7 @@ export const HeroSection = () => {
           sx={{ fontFamily: 'inherit', marginBottom: '20px' }}
           align="right"
         >
-          near earth objects
+          {text.hero.title}
         </Typography>
         <Typography
           sx={{
@@ -21,8 +22,7 @@ export const HeroSection = () => {
           }}
           align="right"
         >
-          comets and asteroids that have been nudged by the gravitational attraction of
-          nearby planets into orbits that allow them to enter the Earth's neighborhood.
+          {text.hero.text}
         </Typography>
       </Container>
     </Hero>
