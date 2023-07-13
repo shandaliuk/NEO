@@ -4,8 +4,9 @@ export const theme: DefaultTheme = {
   colors: {
     primary: '#FFFFFF',
     secondary: '#050505',
+    accent: '#61de2a',
   },
   fonts: {
-    primary: "'Oswald', sans-serif",
+    primary: "'Bebas Neue', sans-serif",
   },
 };
