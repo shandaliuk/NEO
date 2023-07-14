@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Toaster } from 'react-hot-toast';
 
-import { Header } from '../Header/Header';
-import { Footer } from '../Footer/Footer';
+import { Header } from '../Header';
+import { Footer } from '../Footer';
 
 import { MainWrapperProps } from './MainWrapper.props';
 
